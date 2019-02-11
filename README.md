@@ -33,3 +33,28 @@ docker-compose up -d
 - The MEAN name was coined by Valeri Karpov.
 - Initial concept and development was done by Amos Haviv and sponsered by Linnovate.
 - Inspired by the great work of Madhusudhan Srinivasa.
+
+
+###Issues
+
+Changes made to run this code
+=============================
+
+1)
+
+Quick fix, in node_modules\ajv\lib\keyword.js I commented out
+if (!validateDefinition(definition))
+throw new Error('custom keyword definition is invalid: ' + this.errorsText(validateDefinition.errors));
+
+2)
+
+Commented line in node_modules/@angular/flex-layout/extended/typings/style/style.d.ts
+//protected _buildStyleMap(styles: NgStyleType): string | import("./style-transforms").NgStyleMap;
+
+
+3)
+
+ npm remove webpack --save
+ rm -r node_modules
+ rm package-lock.json
+ npm install
