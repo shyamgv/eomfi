@@ -8,7 +8,39 @@
         <tr>
           <td>
             <mat-form-field>
-              <input matInput placeholder="Fullname" formControlName="fullname" name="fullname" required>
+              <input matInput placeholder="FirstName" formControlName="firstname" name="firstname" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <input matInput placeholder="LastName" formControlName="lastname" name="lastname" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <input matInput placeholder="Age" formControlName="age" name="age" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <input matInput placeholder="Profession" formControlName="profession" name="profession" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <mat-select placeholder="City" formControlName="city" required>
+                <mat-option *ngFor="let city of getCityList()" [value]="city">
+                  {{city}}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
           </td>
         </tr>

@@ -27,10 +27,13 @@ export class AuthService {
     });
   }
 
-  register(fullname : string, email : string, password : string, repeatPassword : string) : Observable <any> {
+  register(firstname : string,lastname : string, age : string, profession : string, email : string, password : string, repeatPassword : string) : Observable <any> {
     return Observable.create(observer => {
       this.http.post('/api/auth/register', {
-        fullname,
+        firstname,
+        lastname,
+        age,
+        profession,
         email,
         password,
         repeatPassword
