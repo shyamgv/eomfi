@@ -40,21 +40,25 @@ docker-compose up -d
 Changes made to run this code
 =============================
 
-1)
+## set environment varaiables
+ps  
+    $env:JWT_SECRET="eomfi"  
+    $env:MONGO_HOST="mongodb://localhost/eomfi"
 
-Quick fix, in node_modules\ajv\lib\keyword.js I commented out
+## one time setup
+1)
+```
+npm remove webpack --save
+rm -r node_modules
+rm package-lock.json
+npm install
+```
+
+2) Quick fix, in node_modules\ajv\lib\keyword.js I commented out
 if (!validateDefinition(definition))
 throw new Error('custom keyword definition is invalid: ' + this.errorsText(validateDefinition.errors));
 
-2)
+3)
 
 Commented line in node_modules/@angular/flex-layout/extended/typings/style/style.d.ts
 //protected _buildStyleMap(styles: NgStyleType): string | import("./style-transforms").NgStyleMap;
-
-
-3)
-
- npm remove webpack --save
- rm -r node_modules
- rm package-lock.json
- npm install
