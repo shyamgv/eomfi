@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpEvent} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
 import { TokenStorage } from './token.storage';
-import { TooltipComponent } from '@angular/material';
 
 @Injectable()
 export class AuthService {
@@ -54,6 +53,17 @@ export class AuthService {
 
   getUser(): Observable<any> {
     return this.$userSource.asObservable();
+  }
+
+  getCities(): Observable<any> {
+    console.log("=========Inside Auth service getcities");
+    return Observable.create(observer => {
+      this.http.get('/api/auth/cityList').subscribe((data : any) => {
+        observer.next({data});
+       // this.setUser(data.user);
+        observer.complete();
+      })
+    });
   }
 
   me(): Observable<any> {

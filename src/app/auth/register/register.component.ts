@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, ValidationErrors } from '@angular/forms';
-//import * as citiesList from 'register.component.js';
-
 import {AuthService} from '../auth.service';
-import {cities} from '../server.index'
+import { toArray } from 'rxjs/operators';
 
-declare let citiesList: any;
 
 @Component({
   selector: 'app-register',
@@ -17,10 +14,15 @@ declare let citiesList: any;
 
 export class RegisterComponent implements OnInit {
 
+  public cityList = [];
+
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    console.log(citiesList);
+    console.log("============GET City List getting called ====>>>");
+    let cityLst = this.authService.getCities().subscribe(data => {
+      this.cityList = data["data"];
+    });
   }
 
   passwordsMatchValidator(control: FormControl): ValidationErrors {
@@ -50,7 +52,6 @@ export class RegisterComponent implements OnInit {
   get repeatPassword(): any { return this.userForm.get('repeatPassword'); }
 
   register() {
-
     if(!this.userForm.valid) return;
 
     let {
@@ -69,9 +70,12 @@ export class RegisterComponent implements OnInit {
     })
   }
 
- getCityList (){
-    console.log(citiesList);
-   return citiesList;
-}
-
+/* getCityList(){
+   console.log("============GET City List getting called ====>>>");
+   let cityLst = this.authService.getCities().subscribe(data => {
+     this.cities = data;
+   })
+   console.log("Cities List ====>>>"+ cityLst);
+   return cityLst;
+ }*/
 }

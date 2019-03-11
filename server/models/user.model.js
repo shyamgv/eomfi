@@ -33,6 +33,9 @@ const UserSchema = new mongoose.Schema({
   },
   roles: [{
     type: String,
+  }],
+  cities: [{
+    type: String,
   }]
 }, {
   versionKey: false

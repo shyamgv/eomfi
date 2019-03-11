@@ -1,6 +1,7 @@
 const express = require('express');
 const userRoutes = require('./user.route');
 const authRoutes = require('./auth.route');
+const Cities = require('../models/cities.model');
 
 const router = express.Router(); // eslint-disable-line new-cap
 

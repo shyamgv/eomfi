@@ -1,8 +1,10 @@
 // config should be imported before importing any other file
 const config = require('./config/config');
 const app = require('./config/express');
+//const cities = require('cities.json');
+
 require('./config/mongoose');
-const cities = require('all-the-cities-mongodb')
+
 
 // module.parent check is required to support mocha watch
 // src: https://github.com/mochajs/mocha/issues/1912
@@ -13,11 +15,20 @@ if (!module.parent) {
 }
 
 module.exports = app;
-module.exports = cities;
-const indianCities=[];
 
-cities.filter(indianCities => {
-  if(indianCities.country.match('IN')){
-    console.log(indianCities);
+/*
+
+var i, j, x = "";
+for (i in cities) {
+  // x += "<h2>" + myObj[i].country + "</h2>";
+
+  if (cities[i].country == "IN") {
+    //x += "{" + "country: " + '"' + myObj[i].country + "}";
+    x += JSON.stringify(cities[i]) + ",\n";
   }
-})
+}
+console.log(x)
+
+//  console.log(cities.get);
+*/
+
