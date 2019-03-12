@@ -22,6 +22,5 @@ async function insert(city) {
 async function select(){
   return Cities.find({}, function(err, result) {
     if (err) throw err;
-    //console.log("City Names"+ result);
   }).select({"name": 1});
 }

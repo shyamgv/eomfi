@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, ValidationErrors } from '@angular/forms';
 import {AuthService} from '../auth.service';
-import { toArray } from 'rxjs/operators';
 
 
 @Component({
@@ -19,7 +18,6 @@ export class RegisterComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    console.log("============GET City List getting called ====>>>");
     let cityLst = this.authService.getCities().subscribe(data => {
       this.cityList = data["data"];
     });
@@ -47,6 +45,7 @@ export class RegisterComponent implements OnInit {
   get lastname(): any { return this.userForm.get('lastname'); }
   get age(): any { return this.userForm.get('age'); }
   get profession(): any { return this.userForm.get('profession'); }
+  get city(): any { return this.userForm.get('city'); }
   get email(): any { return this.userForm.get('email'); }
   get password(): any { return this.userForm.get('password'); }
   get repeatPassword(): any { return this.userForm.get('repeatPassword'); }
@@ -59,23 +58,15 @@ export class RegisterComponent implements OnInit {
       lastname,
       age,
       profession,
+      city,
       email,
       password,
       repeatPassword
     } = this.userForm.getRawValue();
 
-    this.authService.register(firstname, lastname, age, profession, email, password, repeatPassword)
+    this.authService.register(firstname, lastname, age, profession, city, email, password, repeatPassword)
     .subscribe(data => {
       this.router.navigate(['']);
     })
   }
-
-/* getCityList(){
-   console.log("============GET City List getting called ====>>>");
-   let cityLst = this.authService.getCities().subscribe(data => {
-     this.cities = data;
-   })
-   console.log("Cities List ====>>>"+ cityLst);
-   return cityLst;
- }*/
 }

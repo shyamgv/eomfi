@@ -26,13 +26,14 @@ export class AuthService {
     });
   }
 
-  register(firstname : string,lastname : string, age : string, profession : string, email : string, password : string, repeatPassword : string) : Observable <any> {
+  register(firstname : string,lastname : string, age : string, profession : string, city: string, email : string, password : string, repeatPassword : string) : Observable <any> {
     return Observable.create(observer => {
       this.http.post('/api/auth/register', {
         firstname,
         lastname,
         age,
         profession,
+        city,
         email,
         password,
         repeatPassword
@@ -56,11 +57,9 @@ export class AuthService {
   }
 
   getCities(): Observable<any> {
-    console.log("=========Inside Auth service getcities");
     return Observable.create(observer => {
       this.http.get('/api/auth/cityList').subscribe((data : any) => {
         observer.next({data});
-       // this.setUser(data.user);
         observer.complete();
       })
     });

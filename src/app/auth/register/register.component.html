@@ -37,7 +37,7 @@
           <td>
             <mat-form-field>
               <mat-select placeholder="City" formControlName="city" required>
-                <mat-option *ngFor="let city of cityList" [value]="cityList">
+                <mat-option *ngFor="let city of cityList" [value]="city">
                   {{city}}
                 </mat-option>
               </mat-select>

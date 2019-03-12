@@ -16,7 +16,6 @@ router.get('/cityList', asyncHandler(cityList));
 
 
 async function register(req, res, next) {
-  console.log("Entered Register====>>>");
   let user = await userCtrl.insert(req.body);
   user = user.toObject();
   delete user.hashedPassword;
@@ -31,13 +30,11 @@ function login(req, res) {
 }
 
 async function cityList(req, res, next) {
-  console.log("Entered CityList====>>>");
 let citiesDetails = await citiesCtrl.select();
 let i = "";
-let cityNames = new Array("");
+let cityNames = new Array();
 for(i in citiesDetails) {
   cityNames.push(citiesDetails[i].name);
 }
-  console.log("cities====>>>" + cityNames);
 res.json(cityNames);
 }

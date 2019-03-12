@@ -8,6 +8,7 @@ const userSchema = Joi.object({
   age: Joi.string(),
   email: Joi.string().email(),
   profession: Joi.string().required(),
+  city: Joi.string().required(),
   mobileNumber: Joi.string().regex(/^[1-9][0-9]{9}$/),
   password: Joi.string().required(),
   repeatPassword: Joi.string().required().valid(Joi.ref('password'))
