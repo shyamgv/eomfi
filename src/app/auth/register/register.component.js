@@ -3,12 +3,10 @@
  */
 const cities = require('all-the-cities-mongodb')
 
-var citiesList = []
-
 var cities = "";
 cities.filter(city => {
   if(city.name.match('Varanasi')){
-    citiesList = city.name;
+    console.log(city.name);
   }
 })
 

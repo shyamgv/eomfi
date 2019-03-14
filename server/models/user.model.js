@@ -35,12 +35,10 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  roles: [{
+  roles: {
     type: String,
-  }],
-  cities: [{
-    type: String,
-  }]
+    default: "volunteer"
+  }
 }, {
   versionKey: false
 });
