@@ -5,11 +5,11 @@ import {FormGroup, FormControl, Validators, ValidationErrors, ReactiveFormsModul
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  templateUrl: './campaign.initiation.html'
+//  styleUrls: ['./home.component.scss']
 })
 
-export class HomeComponent implements OnInit {
+export class CampaignInitiation implements OnInit {
 
   //@Input() user: any = {};
   public cityList = [];
@@ -21,9 +21,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     // init this.user on startup
-/*    this.authService.me().subscribe(data => {
-      this.user = data.user;
-    });*/
+    /*    this.authService.me().subscribe(data => {
+     this.user = data.user;
+     });*/
 
     let cityLst = this.authService.getCities().subscribe(data => {
       this.cityList = data["data"];
@@ -50,9 +50,9 @@ export class HomeComponent implements OnInit {
       })
   }
 
-/*  date
-  region
-  location
-  no. of kids
-  */
+  /*  date
+   region
+   location
+   no. of kids
+   */
 }

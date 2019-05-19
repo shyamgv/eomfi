@@ -1,0 +1,48 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Register</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="example-form">
+      <table cellspacing="0" [formGroup]="userForm">
+        <tr>
+          <td>
+            <mat-form-field>
+              <input matInput placeholder="Village" formControlName="village" name="village" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <input matInput type="date" formControlName="campaignDate" name="campaignDate" placeholder="Choose a date">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <mat-select placeholder="NearestCity" formControlName="city" required>
+                <mat-option *ngFor="let city of cityList" [value]="city">
+                  {{city}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <input matInput placeholder="Email" formControlName="email" name="email" required>
+              <mat-error *ngIf="email.invalid && email.errors.email">Invalid email address</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="initiateCampaign()" color="primary">Initiate Campaign</button>
+  </mat-card-actions>
+
+</mat-card>

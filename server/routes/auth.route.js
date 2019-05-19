@@ -30,7 +30,9 @@ function login(req, res) {
 }
 
 async function cityList(req, res, next) {
+  console.log("Inside citylist route");
 let citiesDetails = await citiesCtrl.select();
+  console.log("citiesDetails"+ citiesDetails);
 let i = "";
 let cityNames = new Array();
 for(i in citiesDetails) {
